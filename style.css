@@ -10,9 +10,9 @@
 }
 :root {
     --bg-color: #080808;
-    --second-bg-color:#131313;
-    --text-color: white;
-    --main-color:blue;
+    --second-bg-color:#020202;
+    --text-color: rgb(14, 13, 13);
+    --main-color:rgba(25, 0, 255, 0.849);
 
 }
 html{
@@ -182,7 +182,7 @@ span{
     position: absolute;
     width: calc(100% + 8px);
     height: 100%;
-    border-left: 3px solid var(--bg-color);
+    border-left: 3px solid var(--main-color);
     right: -8px;
     animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
 
