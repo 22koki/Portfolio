@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -129,17 +130,9 @@
           </div>
 
           <div class="map-canvas" id="mapCanvas">
-            <img
-              src="https://staticmap.openstreetmap.de/staticmap.php?center=-1.20,36.85&zoom=10&size=900x520&maptype=mapnik"
-              alt="Map of Nairobi and Kiambu"
-            >
-            <div class="map-layer layer-boundaries on" data-layer="boundaries"></div>
-            <div class="map-layer layer-landuse on" data-layer="landuse"></div>
-            <div class="map-layer layer-roads on" data-layer="roads"></div>
-            <div class="map-layer layer-buffers" data-layer="buffers"></div>
-            <div class="map-loc loc-one on" data-layer="survey"><i></i><span>Nairobi</span></div>
-            <div class="map-loc loc-two on" data-layer="survey"><i></i><span>Kiambu</span></div>
-            <small class="map-credit">© OpenStreetMap contributors · portfolio overlays are illustrative</small>
+            <div id="liveMap" class="live-map" aria-label="Interactive map of Nairobi and Kiambu">
+              <img class="map-fallback" src="https://staticmap.openstreetmap.de/staticmap.php?center=-1.20,36.85&zoom=10&size=900x520&maptype=mapnik" alt="Fallback map of Nairobi and Kiambu">
+            </div>
           </div>
 
           <aside class="map-stats">
@@ -350,6 +343,7 @@ features[<span class="lime">"prediction"</span>] = model.predict(features[cols])
     <span>◉</span><b>WhatsApp</b>
   </a>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="script.js"></script>
 </body>
 </html>
