@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Christine Wairimu Wahome — Geospatial & Geomatic Engineer, GIS, Remote Sensing, Data and AI.">
+  <meta name="description" content="Christine Wairimu Wahome — Geospatial & Geomatic Engineer specializing in GIS, surveying, remote sensing, spatial data, analytics and AI.">
+  <meta name="author" content="Christine Wairimu Wahome">
+  <meta name="keywords" content="Christine Wairimu Wahome, Geospatial Engineer, Geomatic Engineer, GIS Kenya, Surveying Kenya, Remote Sensing, Spatial Data, QGIS, Nairobi">
+  <link rel="canonical" href="https://22koki.github.io/Portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Christine Wairimu | Geospatial & Geomatic Engineer">
+  <meta property="og:description" content="GIS, surveying, remote sensing, spatial data, analytics and AI — turning location data into useful decisions.">
+  <meta property="og:url" content="https://22koki.github.io/Portfolio/">
+  <meta property="og:image" content="https://images.pexels.com/photos/36964425/pexels-photo-36964425.jpeg?auto=compress&cs=tinysrgb&w=1600">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Christine Wairimu | Geospatial Engineer">
+  <meta name="twitter:description" content="GIS, surveying, remote sensing, spatial data, analytics and AI.">
+  <meta name="twitter:image" content="https://images.pexels.com/photos/36964425/pexels-photo-36964425.jpeg?auto=compress&cs=tinysrgb&w=1600">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <meta name="theme-color" content="#061713">
   <title>Christine Wairimu | Geospatial Engineer</title>
 
@@ -65,7 +78,7 @@
 
           <div class="hero-actions">
             <a href="#projects" class="button primary">View My Work <span>→</span></a>
-            <a href="https://wa.me/254717396334?text=Hello%20Christine%2C%20I%20saw%20your%20geospatial%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" class="button ghost">WhatsApp Me</a>
+            <button type="button" class="button ghost cv-button" id="downloadCv">Download CV ↓</button>
           </div>
         </div>
 
@@ -116,7 +129,10 @@
             <h2>Explore Nairobi & Kiambu in Detail</h2>
             <p>An interactive geospatial experience with real data, multiple layers and insights.</p>
           </div>
-          <a href="#mapCanvas" class="small-button">Open Full Map →</a>
+          <div class="map-toolbar">
+            <button type="button" class="small-button map-reset" id="resetMap">Reset View</button>
+            <span class="map-coordinates" id="mapCoordinates">Click the map to inspect coordinates</span>
+          </div>
         </div>
 
         <div class="map-workbench">
@@ -195,8 +211,15 @@
           <a href="#experience" class="small-button light-button">View All Projects →</a>
         </div>
 
+        <div class="project-filters" aria-label="Filter projects">
+          <button class="project-filter active" data-filter="all">All</button>
+          <button class="project-filter" data-filter="gis">GIS & Data</button>
+          <button class="project-filter" data-filter="environment">Environment</button>
+          <button class="project-filter" data-filter="surveying">Surveying</button>
+        </div>
+
         <div class="project-grid">
-          <article class="project-card">
+          <article class="project-card" data-category="gis">
             <div class="project-image">
               <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/GIS_map.png" alt="GIS thematic map representing urban spatial analysis">
               <span>Urban Analysis</span>
@@ -205,10 +228,11 @@
               <h3>Crime Prediction Using GIS — Ndumberi, Kiambu</h3>
               <p>GIS and machine-learning analysis using land use, accessibility, population, terrain and satellite imagery.</p>
               <div class="project-tags"><span>GIS</span><span>Python</span><span>Spatial ML</span></div>
+              <button type="button" class="case-link" data-case="crime">View Case Study →</button>
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-category="environment">
             <div class="project-image">
               <img src="https://images.unsplash.com/photo-1687363481609-9b64ef9644b0?auto=format&fit=crop&fm=jpg&q=88&w=1200" alt="Aerial river and forest landscape">
               <span>Environment</span>
@@ -217,10 +241,11 @@
               <h3>Riparian & Utility Buffer Mapping</h3>
               <p>Survey and GIS support for riparian areas, pipelines, sewer lines, power lines, waterbodies and sand mines.</p>
               <div class="project-tags"><span>Surveying</span><span>GIS</span><span>Buffers</span></div>
+              <button type="button" class="case-link" data-case="riparian">View Case Study →</button>
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-category="surveying">
             <div class="project-image">
               <img src="https://images.unsplash.com/photo-1531226208074-94fb5a1bb26c?auto=format&fit=crop&fm=jpg&q=88&w=1200" alt="Mountain terrain representing topographic surveying">
               <span>Terrain Modeling</span>
@@ -229,6 +254,7 @@
               <h3>Topographic Mapping & Construction Surveying</h3>
               <p>Benchmarks, profiles, alignment, set-out, cut/fill and construction control using GNSS and total stations.</p>
               <div class="project-tags"><span>GNSS</span><span>Total Station</span><span>CAD</span></div>
+              <button type="button" class="case-link" data-case="terrain">View Case Study →</button>
             </div>
           </article>
         </div>
@@ -275,6 +301,45 @@ features[<span class="lime">"prediction"</span>] = model.predict(features[cols])
           <article><span>◎</span><div><b>AI Model Training</b><small>Evaluation, annotation and quality workflows</small></div></article>
         </div>
       </section>
+
+      <dialog class="case-study" id="case-crime">
+        <button class="case-close" type="button" aria-label="Close case study">×</button>
+        <p class="section-tag">Case Study · GIS + Machine Learning</p>
+        <h2>Crime Prediction Using GIS — Ndumberi, Kiambu</h2>
+        <div class="case-grid">
+          <div><b>Challenge</b><p>Explore how spatial conditions can help explain and predict crime patterns in Ndumberi.</p></div>
+          <div><b>Data</b><p>Land use/land cover, accessibility, population, terrain and satellite-derived spatial variables.</p></div>
+          <div><b>Approach</b><p>Spatial preprocessing, GIS analysis and predictive modelling to identify meaningful geographic patterns.</p></div>
+          <div><b>Output</b><p>Risk-oriented maps and spatial insights designed to support better-informed planning and decision-making.</p></div>
+        </div>
+        <div class="case-tools"><span>GIS</span><span>Python</span><span>Machine Learning</span><span>Remote Sensing</span></div>
+      </dialog>
+
+      <dialog class="case-study" id="case-riparian">
+        <button class="case-close" type="button" aria-label="Close case study">×</button>
+        <p class="section-tag">Case Study · Environment + Surveying</p>
+        <h2>Riparian & Utility Buffer Mapping</h2>
+        <div class="case-grid">
+          <div><b>Challenge</b><p>Support development planning around sensitive riparian corridors and utility infrastructure.</p></div>
+          <div><b>Field Work</b><p>Spatial data collection around pipelines, sewer lines, power lines, waterbodies and related features.</p></div>
+          <div><b>Approach</b><p>Survey observations were organized into GIS-ready datasets and interpreted through buffer-based spatial analysis.</p></div>
+          <div><b>Output</b><p>Maps and documentation supporting conservation, setbacks and safer development decisions.</p></div>
+        </div>
+        <div class="case-tools"><span>GIS</span><span>Surveying</span><span>Buffer Analysis</span><span>Mapping</span></div>
+      </dialog>
+
+      <dialog class="case-study" id="case-terrain">
+        <button class="case-close" type="button" aria-label="Close case study">×</button>
+        <p class="section-tag">Case Study · Topographic + Construction</p>
+        <h2>Topographic Mapping & Construction Surveying</h2>
+        <div class="case-grid">
+          <div><b>Challenge</b><p>Provide reliable field measurements for road design, earthworks and construction control.</p></div>
+          <div><b>Field Work</b><p>Benchmarks, profiles, control points, leveling, alignment checks, set-out and cut/fill measurements.</p></div>
+          <div><b>Approach</b><p>Total Station and GNSS-supported field workflows combined with structured survey documentation.</p></div>
+          <div><b>Output</b><p>Survey measurements and control information supporting design, construction and verification work.</p></div>
+        </div>
+        <div class="case-tools"><span>GNSS</span><span>Total Station</span><span>Leveling</span><span>CAD</span></div>
+      </dialog>
     </section>
 
     <section class="research-strip" id="research">
@@ -313,6 +378,33 @@ features[<span class="lime">"prediction"</span>] = model.predict(features[cols])
       </div>
     </section>
 
+    <section class="skills-section" id="skills">
+      <div class="skills-heading">
+        <p class="section-tag">Skills & Tools</p>
+        <h2>From field data to spatial intelligence.</h2>
+        <p>A focused toolkit for collecting, analyzing, automating and communicating geospatial information.</p>
+      </div>
+      <div class="skills-grid">
+        <article><span>01</span><h3>GIS & Mapping</h3><p>QGIS · ArcGIS · GeoServer · Google Earth Engine · AutoCAD · Civil 3D</p></article>
+        <article><span>02</span><h3>Surveying</h3><p>GNSS · RTK · Total Station · Leveling · Topographic & cadastral workflows</p></article>
+        <article><span>03</span><h3>Data & Programming</h3><p>Python · GeoPandas · Pandas · SQL · R · PostgreSQL · MySQL</p></article>
+        <article><span>04</span><h3>Remote Sensing</h3><p>Landsat · Sentinel · MODIS · Earth observation · Photogrammetry · Drone imagery</p></article>
+        <article><span>05</span><h3>Data Products</h3><p>Power BI · Tableau · GeoJSON · Spatial APIs · Dashboards · React</p></article>
+        <article><span>06</span><h3>Research & Delivery</h3><p>Technical writing · Research design · Visualization · Reporting · Project coordination</p></article>
+      </div>
+
+      <div class="availability">
+        <div>
+          <span class="availability-dot"></span>
+          <div><b>Available for opportunities</b><small>Remote, project-based and Nairobi-based work</small></div>
+        </div>
+        <div class="availability-tags">
+          <span>GIS Analyst</span><span>Geospatial Engineer</span><span>Surveying</span><span>Remote Sensing</span><span>Spatial Data</span><span>AI & Data</span>
+        </div>
+        <a href="https://wa.me/254717396334?text=Hello%20Christine%2C%20I%20saw%20your%20geospatial%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity." target="_blank" rel="noopener">Discuss an Opportunity →</a>
+      </div>
+    </section>
+
     <section class="contact" id="contact">
       <img class="contact-photo" src="https://images.unsplash.com/photo-1531226208074-94fb5a1bb26c?auto=format&fit=crop&fm=jpg&q=88&w=1800" alt="Mountain landscape">
       <div class="contact-fade"></div>
@@ -337,6 +429,17 @@ features[<span class="lime">"prediction"</span>] = model.predict(features[cols])
         <span>— Christine W. Wahome</span>
       </blockquote>
     </section>
+
+    <footer class="site-footer">
+      <div><b>Christine Wairimu Wahome</b><span>Geospatial & Geomatic Engineer · Nairobi, Kenya</span></div>
+      <div class="footer-links">
+        <a href="mailto:christine.wahome@students.jkuat.ac.ke">Email</a>
+        <a href="tel:+254717396334">Phone</a>
+        <a href="https://wa.me/254717396334" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- Add Christine's LinkedIn URL here when available -->
+      </div>
+      <p>Built around spatial thinking. © <span id="year"></span> Christine Wairimu Wahome.</p>
+    </footer>
   </main>
 
   <a class="whatsapp-float" href="https://wa.me/254717396334?text=Hello%20Christine%2C%20I%20saw%20your%20geospatial%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" aria-label="Chat with Christine on WhatsApp">
@@ -344,6 +447,20 @@ features[<span class="lime">"prediction"</span>] = model.predict(features[cols])
   </a>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Christine Wairimu Wahome",
+    "jobTitle":"Geospatial & Geomatic Engineer",
+    "email":"christine.wahome@students.jkuat.ac.ke",
+    "telephone":"+254717396334",
+    "address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressCountry":"KE"},
+    "url":"https://22koki.github.io/Portfolio/",
+    "knowsAbout":["GIS","Surveying","Remote Sensing","Spatial Data","Python","Geospatial Analysis","AI Model Training"]
+  }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
