@@ -1,45 +1,61 @@
-const menuButton = document.getElementById('menuButton');
-const navMenu = document.getElementById('navMenu');
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
 
-menuButton.addEventListener('click', () => {
-  const open = navMenu.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', String(open));
+menuToggle?.addEventListener('click', () => {
+  const open = mainNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(open));
 });
 
-document.querySelectorAll('#navMenu a').forEach(link => {
+mainNav?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
+    mainNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
   });
 });
 
-document.querySelectorAll('[data-toggle]').forEach(control => {
-  control.addEventListener('change', () => {
-    const name = control.dataset.toggle;
+document.querySelectorAll('[data-layer-toggle]').forEach(input => {
+  input.addEventListener('change', () => {
+    const name = input.dataset.layerToggle;
     document.querySelectorAll('[data-layer="' + name + '"]').forEach(layer => {
-      layer.classList.toggle('active', control.checked);
+      layer.classList.toggle('on', input.checked);
     });
-    if (name === 'imagery') {
-      const image = document.querySelector('.static-map img');
-      image.style.opacity = control.checked ? '1' : '.25';
-    }
   });
 });
 
-const reveals = document.querySelectorAll('.project-card,.stats-stack article,.analysis-list article,.experience-grid article,.research-cards article');
+const runDemo = document.getElementById('runDemo');
+const codeStatus = document.getElementById('codeStatus');
+runDemo?.addEventListener('click', () => {
+  runDemo.textContent = 'Running…';
+  codeStatus.textContent = 'Processing spatial features → classifying → preparing visualization…';
+  setTimeout(() => {
+    codeStatus.textContent = '✓ Demo complete: spatial prediction layer ready.';
+    runDemo.textContent = '▶ Run';
+  }, 900);
+});
+
+const navLinks = [...document.querySelectorAll('#mainNav a:not(.nav-connect)')];
+const sections = [...document.querySelectorAll('section[id]')];
+const updateActive = () => {
+  const y = window.scrollY + 110;
+  let current = 'home';
+  sections.forEach(section => {
+    if (section.offsetTop <= y) current = section.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+};
+window.addEventListener('scroll', updateActive, { passive: true });
+updateActive();
+
+const items = document.querySelectorAll('.project-card,.stats article,.ai-list article,.research-card,.experience-grid article');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('show');
+    if (entry.isIntersecting) entry.target.classList.add('reveal');
   });
-}, { threshold: .12 });
-
-reveals.forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(12px)';
-  el.style.transition = 'opacity .45s ease, transform .45s ease';
-  observer.observe(el);
-});
+}, { threshold: .1 });
+items.forEach(el => observer.observe(el));
 
 const style = document.createElement('style');
-style.textContent = '.show{opacity:1!important;transform:none!important}';
+style.textContent = '.project-card,.stats article,.ai-list article,.research-card,.experience-grid article{opacity:0;transform:translateY(12px);transition:.45s ease}.reveal{opacity:1!important;transform:none!important}';
 document.head.appendChild(style);
