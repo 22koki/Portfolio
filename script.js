@@ -28,10 +28,14 @@ if (window.L && document.getElementById('liveMap')) {
   const mapNode = document.getElementById('liveMap');
   mapNode.innerHTML = '';
 
+  const defaultView = { center: [-1.20, 36.85], zoom: 10 };
   const map = L.map('liveMap', {
     zoomControl: true,
     scrollWheelZoom: true
-  }).setView([-1.20, 36.85], 10);
+  }).setView(defaultView.center, defaultView.zoom);
+
+  window.portfolioMap = map;
+  window.portfolioMapDefault = defaultView;
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -123,6 +127,18 @@ if (window.L && document.getElementById('liveMap')) {
       if (input.checked) layer.addTo(map);
       else map.removeLayer(layer);
     });
+  });
+
+  const coordinateLabel = document.getElementById('mapCoordinates');
+  map.on('click', (event) => {
+    if (coordinateLabel) {
+      coordinateLabel.textContent = event.latlng.lat.toFixed(5) + '°, ' + event.latlng.lng.toFixed(5) + '°';
+    }
+  });
+
+  document.getElementById('resetMap')?.addEventListener('click', () => {
+    map.setView(defaultView.center, defaultView.zoom);
+    if (coordinateLabel) coordinateLabel.textContent = 'Click the map to inspect coordinates';
   });
 
   setTimeout(() => map.invalidateSize(), 250);
@@ -238,9 +254,6 @@ document.getElementById('downloadCv')?.addEventListener('click', () => {
 
   section('Skills');
   body('GIS & Mapping: QGIS, ArcGIS, GeoServer, Google Earth Engine, AutoCAD, Civil 3D\nSurveying: GNSS, RTK, Total Station, Leveling, Topographic and Cadastral Workflows\nData & Programming: Python, GeoPandas, Pandas, SQL, R, PostgreSQL, MySQL\nRemote Sensing: Landsat, Sentinel, MODIS, Earth Observation, Photogrammetry, Drone Imagery\nData Products: Power BI, Tableau, GeoJSON, Spatial APIs, Dashboards, React');
-
-  section('Education & Certifications');
-  body('BSc. Geomatic Engineering & Geospatial Information Systems - Jomo Kenyatta University of Agriculture & Technology (2016-2024)\nGoogle Data Analytics - Coursera\nMicrosoft Power BI Data Analyst - Coursera\nR Programming - Academic Data Analysts');
 
   doc.save('Christine_Wairimu_Wahome_CV.pdf');
 });
