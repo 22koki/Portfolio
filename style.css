@@ -147,14 +147,16 @@ nav a:hover{color:#fff}
 .about-copy h2{font-size:35px;line-height:1.03;margin:7px 0 13px}
 .about-copy>p:not(.section-kicker){color:#687872;font-size:11px}
 .dark-link{display:inline-block;margin-top:8px;padding:10px 13px;background:#0b493a;color:white;border-radius:6px;font-size:10px}
-.survey-scene{position:relative;height:220px;border-radius:8px;overflow:hidden;background:linear-gradient(145deg,#d9dec0 0 38%,#5d8060 39% 64%,#1a382d 65%)}
-.sun{position:absolute;width:50px;height:50px;border-radius:50%;background:#f0b94a;right:24px;top:24px}
-.tripod{position:absolute;left:48%;top:72px;width:24px;height:34px;background:#f4bb34;border:5px solid #222;border-radius:4px}
-.tripod::before,.tripod::after{content:"";position:absolute;top:30px;width:5px;height:105px;background:#242b28;transform-origin:top}
-.tripod::before{left:1px;transform:rotate(12deg)}.tripod::after{right:1px;transform:rotate(-12deg)}
-.person{position:absolute;left:61%;top:70px;width:34px;height:125px;background:#102f28;border-radius:18px 18px 6px 6px;transform:rotate(3deg)}
-.person::before{content:"";position:absolute;left:5px;top:-26px;width:25px;height:25px;background:#6a402a;border-radius:50%}
-.person::after{content:"";position:absolute;right:-22px;top:30px;width:48px;height:10px;background:#6a402a;transform:rotate(-18deg);transform-origin:left}
+.about-photo{position:relative}
+.surveyor-photo{
+  height:230px;object-fit:cover;object-position:center;
+  border-radius:10px;box-shadow:0 14px 36px rgba(12,38,31,.13)
+}
+.photo-label{
+  position:absolute;left:12px;bottom:12px;padding:7px 9px;border-radius:5px;
+  background:rgba(5,23,18,.78);backdrop-filter:blur(8px);
+  color:#9bf4d0;font:7px var(--mono);letter-spacing:.12em
+}
 .stats-stack{display:grid;gap:7px}
 .stats-stack article{padding:11px;background:#f3f5f3;border-radius:7px;display:flex;gap:8px;align-items:center}
 .stats-stack article>span{width:28px;height:28px;border-radius:50%;background:#dff6ec;color:#117a5d;display:grid;place-items:center;font-size:12px}
@@ -164,7 +166,11 @@ nav a:hover{color:#fff}
 .section-heading h2{font-size:30px;margin:5px 0 0}
 .project-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
 .project-card{background:white;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.project-card img{height:130px;object-fit:cover}
+.project-card img{
+  height:145px;object-fit:cover;transition:transform .45s ease,filter .45s ease;
+  filter:saturate(.92) contrast(1.03)
+}
+.project-card:hover img{transform:scale(1.035);filter:saturate(1.05) contrast(1.04)}
 .project-content{padding:13px}
 .project-tag{font:7px var(--mono);color:#0f7659}
 .project-card h3{font:700 16px/1.15 var(--serif);margin:6px 0 7px}
@@ -177,7 +183,15 @@ nav a:hover{color:#fff}
 }
 .analysis-copy h2{font-size:31px;line-height:1.02;margin:6px 0 10px}.analysis-copy>p:not(.section-kicker){color:#687872;font-size:9px}
 .analysis-actions{display:flex;gap:6px;flex-wrap:wrap}.analysis-actions a{padding:8px 10px;border-radius:5px;background:#0c5b46;color:white;font-size:8px}.analysis-actions a+ a{background:white;color:#18352d;border:1px solid #d6e0db}
-.spatial-dashboard{position:relative}.spatial-dashboard img{border-radius:8px;box-shadow:0 15px 30px rgba(12,38,31,.1)}
+.spatial-dashboard{position:relative;overflow:hidden;border-radius:8px}
+.spatial-dashboard img{
+  min-height:210px;height:100%;object-fit:cover;border-radius:8px;
+  box-shadow:0 15px 30px rgba(12,38,31,.1);filter:saturate(.88) contrast(1.04)
+}
+.spatial-dashboard::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(4,24,19,.02),rgba(4,24,19,.22))
+}
 .dashboard-label{position:absolute;left:10px;top:10px;background:rgba(5,25,20,.82);color:var(--green);font:7px var(--mono);padding:6px 8px;border-radius:4px}
 .analysis-list{display:grid;gap:6px}.analysis-list article{display:flex;gap:7px;align-items:center;padding:9px;background:white;border:1px solid #e0e7e3;border-radius:7px}.analysis-list article>span{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#dff4eb;color:#0c7659;font-size:10px}.analysis-list b,.analysis-list small{display:block}.analysis-list b{font-size:8px}.analysis-list small{font-size:6px;color:#829089}
 
@@ -197,8 +211,8 @@ nav a:hover{color:#fff}
 .contact-band{
   position:relative;padding:38px 5vw;display:grid;grid-template-columns:1.1fr 1fr auto;gap:28px;align-items:end;
   color:#10261f;background:
-    linear-gradient(90deg,rgba(236,244,239,.98) 0 56%,rgba(236,244,239,.6) 70%,rgba(236,244,239,.25)),
-    url("assets/project-terrain.svg") right center/45% cover no-repeat
+    linear-gradient(90deg,rgba(236,244,239,.98) 0 53%,rgba(236,244,239,.68) 66%,rgba(236,244,239,.2)),
+    url("https://images.unsplash.com/photo-1531226208074-94fb5a1bb26c?auto=format&fit=crop&w=1600&q=85") right center/48% cover no-repeat
 }
 .contact-band h2{font-size:34px;margin:5px 0}.contact-band>p{font-size:10px;color:#61736b;margin:0}
 .contact-actions{display:flex;flex-direction:column;gap:7px;font-size:9px}.contact-actions a:first-child{padding:9px 11px;border-radius:5px;background:#0b5d48;color:white;font-weight:700}
@@ -236,4 +250,25 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:18px 5vw;back
   .analysis-list,.experience-grid{grid-template-columns:1fr}
   .contact-band{grid-template-columns:1fr;background:linear-gradient(rgba(236,244,239,.94),rgba(236,244,239,.94)),url("assets/project-terrain.svg") center/cover no-repeat}
   footer{flex-direction:column;text-align:center}
+}
+.whatsapp-float{
+  position:fixed;right:22px;bottom:22px;z-index:1200;
+  display:flex;align-items:center;gap:9px;padding:10px 13px 10px 10px;
+  border-radius:999px;background:#1fb765;color:white;
+  box-shadow:0 14px 38px rgba(16,86,55,.3);
+  border:1px solid rgba(255,255,255,.28);
+  transition:transform .2s ease,box-shadow .2s ease
+}
+.whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(16,86,55,.38)}
+.whatsapp-icon{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:white;color:#1fb765;font-size:17px;font-weight:700
+}
+.whatsapp-text b,.whatsapp-text small{display:block}
+.whatsapp-text b{font-size:10px;line-height:1.1}
+.whatsapp-text small{font-size:7px;color:#e6fff0;margin-top:2px}
+.photo-credit{color:#69857a}
+@media(max-width:540px){
+  .whatsapp-text{display:none}
+  .whatsapp-float{right:14px;bottom:14px;padding:8px}
 }
