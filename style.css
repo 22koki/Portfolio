@@ -150,3 +150,7 @@ h1,h2,h3,p{margin-top:0}
 @media(max-width:520px){
   .skills-grid{grid-template-columns:1fr}
 }
+
+.map-modes{display:flex;gap:4px;padding:3px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.04)}
+.map-mode{border:0;background:transparent;color:#98afa6;border-radius:999px;padding:5px 8px;font-size:5.8px;cursor:pointer}
+.map-mode.active{background:#65efbe;color:#062018;font-weight:700}
