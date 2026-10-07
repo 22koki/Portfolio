@@ -37,10 +37,22 @@ if (window.L && document.getElementById('liveMap')) {
   window.portfolioMap = map;
   window.portfolioMapDefault = defaultView;
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+  const baseLayers = {
+    street: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }),
+    terrain: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      maxZoom: 17,
+      attribution: 'Map data &copy; OpenStreetMap contributors | Map style &copy; OpenTopoMap'
+    }),
+    satellite: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19,
+      attribution: 'Tiles &copy; Esri'
+    })
+  };
+
+  let activeBaseLayer = baseLayers.street.addTo(map);
 
   const pinIcon = L.divIcon({
     className: 'portfolio-pin',
@@ -126,6 +138,17 @@ if (window.L && document.getElementById('liveMap')) {
       if (!layer) return;
       if (input.checked) layer.addTo(map);
       else map.removeLayer(layer);
+    });
+  });
+
+  document.querySelectorAll('.map-mode').forEach(button => {
+    button.addEventListener('click', () => {
+      const next = baseLayers[button.dataset.mapStyle];
+      if (!next || next === activeBaseLayer) return;
+      map.removeLayer(activeBaseLayer);
+      activeBaseLayer = next.addTo(map);
+      document.querySelectorAll('.map-mode').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
     });
   });
 
