@@ -1,270 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio website</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Christine Wairimu Wahome — Geospatial & Geomatic Engineer working across GIS, surveying, remote sensing, data analytics, spatial applications and AI." />
+  <meta name="theme-color" content="#071714" />
+  <title>Christine Wairimu | Geospatial & Geomatic Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <header class="header">
-        <a href="#home" class="logo"> Faith
-            <span>Wahome</span></a>
+  <div class="noise" aria-hidden="true"></div>
 
-        <i class='bx bx-menu' id="menu-icon"></i>
+  <header class="site-header" id="top">
+    <a class="brand" href="#home" aria-label="Christine Wairimu home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 70 34" role="img">
+          <path d="M2 29C13 22 18 8 29 7c8-1 9 12 17 12 6 0 8-8 15-9 3 0 5 1 7 4" />
+          <path d="M8 29h54" />
+          <circle cx="29" cy="7" r="2.4" />
+        </svg>
+      </span>
+      <span>
+        <strong>Christine Wairimu</strong>
+        <small>Geospatial Engineer · GIS · Data · AI</small>
+      </span>
+    </a>
 
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#education">Education</a>
-            <a href="#services">Services</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span>
+    </button>
 
-   <section class="home" id="home">
-    <div class="home-content">
-        <h1> Hi, It's <span> Faith</span></h1>
-        <h3 class="text-animation">I'm a <span></span></h3>
-        <p>Lorem ipsum dolor sit amet, 
-            consectetur adipisicing elit.
-            Cumque vitae odit minus eveniet repellat 
-            quisquam possimus debitis, optio aperiam in.
-        </p>        
-        <div class="social-icons">
-            <a href="#"><i class='bx bxl-linkedin'></i></a>
-            <a href="#"><i class='bx bxl-github' ></i></a>
-            <a href="#"><i class='bx bxl-instagram' ></i></a>
-            <a href="#"><i class='bx bxl-tiktok' ></i></a>
-            <a href="#"><i class='bx bxl-facebook' ></i></a>
-        </div>
-        <div class="btn-group">
-            <a href="#" class="btn">Hire</a>
-            <a href="contact" class="btn">Contact</a>
-        </div>
-    </div>
-    <div class="home-img">
-        <img src="faith.jpg" alt="">
-    </div>
-</section>
+    <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#ai-data">AI & Data</a>
+      <a href="#research">Research</a>
+      <a href="#contact" class="nav-cta">Let's Connect <span>↗</span></a>
+    </nav>
+  </header>
 
+  <main>
+    <section class="hero dark-section" id="home">
+      <div class="hero-map" id="heroMap" aria-label="Map of Nairobi and Kiambu"></div>
+      <div class="hero-overlay"></div>
+      <div class="contours" aria-hidden="true"></div>
 
-    <section class="education" id="education">
-        <h2 class="heading">Education</h2>
-        <div class="timeline-items">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2021</div>
-                <div class="timeline-content">
-                    <h3>Highschool</h3>
-                    <p>Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit.
-                        Cumque vitae odit minus eveniet repellat 
-                        quisquam possimus debitis, optio aperiam in.
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2022</div>
-                <div class="timeline-content">
-                    <h3>University</h3>
-                    <p>Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit.
-                        Cumque vitae odit minus eveniet repellat 
-                        quisquam possimus debitis, optio aperiam in.
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2023</div> <!-- corrected year to be in sequence -->
-                <div class="timeline-content">
-                    <h3>Internship</h3>
-                    <p>Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit.
-                        Cumque vitae odit minus eveniet repellat 
-                        quisquam possimus debitis, optio aperiam in.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="services" id="services">
-        <h2 class="heading">Services</h2>
-        <div class="services-container">
-            <div class="services-box">
-                <div class="service-info">
-                    <h4>UI/UX Design</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, 
-                        adipisicing elit. Quis, eaque obcaecati ipsam 
-                        architecto aliquid ipsum 
-                        consequuntur eveniet facilis id voluptas.</p>
-                </div>
-            </div>
-            <div class="services-box">
-                <div class="service-info">
-                    <h4>Backend Development</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, 
-                        adipisicing elit. Quis, eaque obcaecati ipsam 
-                        architecto aliquid ipsum 
-                        consequuntur eveniet facilis id voluptas.</p>
-                </div>
-            </div>
-            <div class="services-box">
-                <div class="service-info">
-                    <h4>Web design</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, 
-                        adipisicing elit. Quis, eaque obcaecati ipsam 
-                        architecto aliquid ipsum 
-                        consequuntur eveniet facilis id voluptas.</p>
-                </div>
-            </div>
-            <div class="services-box">
-                <div class="service-info">
-                    <h4>Web Development</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, 
-                        adipisicing elit. Quis, eaque obcaecati ipsam 
-                        architecto aliquid ipsum 
-                        consequuntur eveniet facilis id voluptas.</p>
-                </div>
-            </div> 
-        </div>
-    </section>
-    <section class="testimonials" id="testimonials">
-        <div class="testimonials-box">
-            <h2 class="heading">Testimonials</h2>
-            <div class="wrapper">
-
-            <div class="testimonial-item">
-                <img src="download (3).jpeg" alt="">
-                <h2>John</h2>
-                <div class="rating">
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur 
-                    adipisicing elit. Nostrum unde ut voluptatibus
-                     quam nemo numquam consequuntur 
-                    deleniti praesentium harum optio.</p>
-
-
-            </div>
-            <div class="testimonial-item">
-                <img src="download (1).jpeg" alt="">
-                <h2>Lydiah</h2>
-                <div class="rating">
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-
-
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur 
-                    adipisicing elit. Nostrum unde ut voluptatibus
-                     quam nemo numquam consequuntur 
-                    deleniti praesentium harum optio.</p>
-
-
-            </div>
-            <div class="testimonial-item">
-                <img src="download (2).jpeg" alt="">
-                <h2>Lucy</h2>
-                <div class="rating">
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-                    <i class='bx bxs-star'
-                    id="star"></i>
-
-
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur 
-                    adipisicing elit. Nostrum unde ut voluptatibus
-                     quam nemo numquam consequuntur 
-                    deleniti praesentium harum optio.</p>
-
-
-            </div>
-        
-        </div>
-    </div>
-    </section>
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact<span>Me</span></h2>
-        <form action="">
-            <div class="input-group">
-                <div class="input-box">
-                    <input type="text" name="fullName" placeholder="Full Name">
-                    <input type="email" name="email" placeholder="Email">
-                </div>
-                <div class="input-box">
-                    <input type="number" name="phoneNumber" placeholder="Phone Number">
-                    <input type="text" name="subject" placeholder="Subject">
-                </div>
-            </div>
-            <div class="input-group-2">
-                <textarea name="message" cols="30" rows="10" placeholder="Your Message"></textarea>
-                <input type="submit" value="Send Message" class="btn">
-            </div>
-        </form>
-    </section>
-
-    <footer class="footer">
-        <div class="social">
-            <a href="#"><i class='bx bxl-linkedin'></i></a>
-            <a href="#"><i class='bx bxl-github' ></i></a>
-            <a href="#"><i class='bx bxl-instagram' ></i></a>
-            <a href="#"><i class='bx bxl-tiktok' ></i></a>
-            <a href="#"><i class='bx bxl-facebook' ></i></a>
-        </div>
-        <ul class="list">
-            <li>
-                <a href="#">FAQ</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">About Me</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-            <li>
-                <a href="#">Testimonials</a>
-            </li>
-        </ul>
-        <p class="copyright">
-            @ Faith Wahome | All Rights Reserved
+      <div class="hero-content">
+        <p class="eyebrow">Geospatial · Surveying · Remote Sensing · Data · AI</p>
+        <h1>Mapping Today.<br><span>Building Tomorrow.</span></h1>
+        <p class="hero-copy">
+          I’m Christine Wairimu Wahome — a Geospatial & Geomatic Engineer in Nairobi turning spatial data,
+          field observations and analytical workflows into practical tools for planning, infrastructure,
+          environmental monitoring and decision-making.
         </p>
-    </footer>
-    
 
-    <script src="script.js"></script>
+        <div class="hero-actions">
+          <a href="#projects" class="button button-primary">View My Work <span>→</span></a>
+          <a href="#contact" class="button button-ghost">Work With Me</a>
+        </div>
+      </div>
+
+      <div class="map-data-card" aria-label="Nairobi map information">
+        <div class="map-data-head">
+          <span class="pulse"></span>
+          <strong>Nairobi, Kenya</strong>
+        </div>
+        <dl>
+          <div><dt>Focus</dt><dd>Spatial intelligence</dd></div>
+          <div><dt>Methods</dt><dd>GIS · RS · Survey</dd></div>
+          <div><dt>Data</dt><dd>Vector · Raster · Field</dd></div>
+          <div><dt>Build</dt><dd>APIs · Dashboards</dd></div>
+        </dl>
+      </div>
+
+      <div class="capability-strip">
+        <article>
+          <span class="cap-icon">⌖</span>
+          <div><strong>Surveying & Mapping</strong><small>GNSS, Total Station, RTK & field data</small></div>
+        </article>
+        <article>
+          <span class="cap-icon">◇</span>
+          <div><strong>GIS & Spatial Analysis</strong><small>Geodatabases, modelling & location insight</small></div>
+        </article>
+        <article>
+          <span class="cap-icon">◫</span>
+          <div><strong>Remote Sensing</strong><small>Satellite imagery & earth observation</small></div>
+        </article>
+        <article>
+          <span class="cap-icon">⌘</span>
+          <div><strong>AI & Data</strong><small>Analytics, automation & model workflows</small></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about light-section section-pad" id="about">
+      <div class="section-label">About Me</div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <h2>Geospatial solutions for a smarter, more sustainable Africa.</h2>
+          <p>
+            My work sits at the intersection of surveying, GIS, remote sensing, data analytics and software.
+            I enjoy moving from raw field or satellite data to clean spatial datasets, useful analysis,
+            maps, dashboards and simple applications that make information easier to understand and act on.
+          </p>
+          <p>
+            I’m especially interested in urban growth, environmental monitoring, infrastructure planning,
+            spatial decision support and the responsible use of AI in data workflows.
+          </p>
+          <a class="text-link" href="#experience">Explore my experience <span>→</span></a>
+        </div>
+
+        <div class="about-visual">
+          <div class="survey-visual">
+            <div class="survey-sun"></div>
+            <div class="survey-tripod"></div>
+            <div class="survey-lines"></div>
+            <span class="survey-tag">FIELD → DATA → INSIGHT</span>
+          </div>
+
+          <div class="fact-stack">
+            <div><strong>25%</strong><span>reported database performance improvement</span></div>
+            <div><strong>Field + Office</strong><span>survey, research and analytical experience</span></div>
+            <div><strong>GIS · RS · AI</strong><span>cross-disciplinary spatial toolkit</span></div>
+            <div><strong>Nairobi</strong><span>Kenya · remote collaboration ready</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects light-section section-pad" id="projects">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Featured Projects</div>
+          <h2>Selected Work</h2>
+          <p>Projects and case studies spanning GIS, surveying, research, APIs and spatial data products.</p>
+        </div>
+        <a class="button button-light" href="#projectGrid">Explore projects <span>→</span></a>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <article class="project-card project-crime">
+          <div class="project-art">
+            <div class="heat-grid"></div>
+            <span class="project-chip">GIS + MACHINE LEARNING</span>
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">Final Year Research · JKUAT</p>
+            <h3>Prediction of Crime Based on GIS — Ndumberi, Kiambu</h3>
+            <p>
+              A GIS and machine-learning study combining land use/land cover, accessibility, population,
+              terrain and satellite imagery to identify spatial patterns relevant to crime-risk analysis.
+            </p>
+            <div class="tag-row"><span>QGIS</span><span>Python</span><span>Spatial Modelling</span><span>ML</span></div>
+          </div>
+        </article>
+
+        <article class="project-card project-riparian">
+          <div class="project-art">
+            <div class="river-line"></div>
+            <div class="buffer b1"></div>
+            <div class="buffer b2"></div>
+            <span class="project-chip">ENVIRONMENT + BUFFER ANALYSIS</span>
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">Earthscope Company Limited</p>
+            <h3>Riparian, Utility & Development Buffer Mapping</h3>
+            <p>
+              Spatial data collection and survey support for riparian areas, pipelines, sewer lines,
+              power lines, waterbodies and sand mines to support safer development planning.
+            </p>
+            <div class="tag-row"><span>Survey</span><span>GIS</span><span>Buffers</span><span>Mapping</span></div>
+          </div>
+        </article>
+
+        <article class="project-card project-terrain">
+          <div class="project-art">
+            <div class="terrain-ridges"></div>
+            <span class="project-chip">TOPOGRAPHY + CONSTRUCTION</span>
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">SS Mehta & Sons · Lexis International</p>
+            <h3>Topographic, Road & Construction Surveying</h3>
+            <p>
+              Benchmarks, control points, profiles, culvert set-out, elevation checks, cut/fill work
+              and ground-truthing to support road design and construction quality control.
+            </p>
+            <div class="tag-row"><span>Total Station</span><span>Leveling</span><span>GNSS</span><span>CAD</span></div>
+          </div>
+        </article>
+
+        <article class="project-card project-api">
+          <div class="project-art code-art">
+            <pre><code>GET /api/features
+?type=parcel
+&bbox=36.6,-1.4,37.1,-1.0
+
+200 OK
+{ "type": "FeatureCollection" }</code></pre>
+            <span class="project-chip">SPATIAL SOFTWARE</span>
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">Geospatial Development</p>
+            <h3>GeoJSON APIs, Spatial Queries & Dashboards</h3>
+            <p>
+              Backend endpoints for spatial GeoJSON, geographic feature filtering, SQL-based spatial retrieval,
+              automated data cleaning and interactive dashboards combining tabular and map-based information.
+            </p>
+            <div class="tag-row"><span>Python</span><span>SQL</span><span>GeoJSON</span><span>React</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="map-lab dark-section section-pad" aria-labelledby="mapLabTitle">
+      <div class="section-header dark-header">
+        <div>
+          <div class="section-label">Interactive Map Experience</div>
+          <h2 id="mapLabTitle">Explore Nairobi & Kiambu</h2>
+          <p>A lightweight spatial playground demonstrating the kinds of map layers and interactions I build with.</p>
+        </div>
+        <span class="demo-note">Illustrative portfolio layers</span>
+      </div>
+
+      <div class="map-workbench">
+        <div class="layer-panel">
+          <strong>Layers</strong>
+          <label><input type="checkbox" data-layer="analysis" checked> Analysis zone</label>
+          <label><input type="checkbox" data-layer="survey" checked> Survey points</label>
+          <label><input type="checkbox" data-layer="route" checked> Field route</label>
+          <label><input type="checkbox" data-layer="buffers"> Utility buffers</label>
+          <div class="layer-divider"></div>
+          <small>Click the map markers to inspect locations.</small>
+        </div>
+
+        <div id="detailMap" class="detail-map" aria-label="Interactive Nairobi and Kiambu portfolio map"></div>
+
+        <aside class="map-insights">
+          <p class="mini-label">Spatial workflow</p>
+          <h3>From location to decision.</h3>
+          <div class="workflow">
+            <span>01</span><p><strong>Collect</strong> Field, satellite and secondary data</p>
+            <span>02</span><p><strong>Clean</strong> Validate, transform and structure</p>
+            <span>03</span><p><strong>Analyze</strong> Spatial, statistical and thematic methods</p>
+            <span>04</span><p><strong>Communicate</strong> Maps, dashboards, APIs and reports</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="experience light-section section-pad" id="experience">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Experience</div>
+          <h2>Fieldwork meets analytical thinking.</h2>
+          <p>A career path shaped by surveying, research, spatial data and project coordination.</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article>
+          <div class="timeline-year">2024–2025</div>
+          <div class="timeline-card">
+            <p class="project-kicker">Earthscope Company Limited</p>
+            <h3>Geomatic / Geospatial Engineer Intern</h3>
+            <p>
+              Conducted and supported cadastral, topographic, general boundary, subdivision, amalgamation,
+              utility and environmental surveys; prepared survey documentation, mutations and deed plans,
+              and worked with RIM/FR map data.
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <div class="timeline-year">May–June</div>
+          <div class="timeline-card accent-card">
+            <p class="project-kicker">AI Data Work</p>
+            <h3>AI Model Training</h3>
+            <p>
+              Worked on AI model-training workflows involving structured evaluation, data quality,
+              annotation/review discipline and consistent application of task guidelines.
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <div class="timeline-year">2020–2022</div>
+          <div class="timeline-card">
+            <p class="project-kicker">Papercorp Limited</p>
+            <h3>Researcher & Editor</h3>
+            <p>
+              Conducted quantitative and qualitative research, designed data-collection resources,
+              analyzed datasets, prepared presentations and transformed multi-source research into clear
+              technical and strategic content.
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <div class="timeline-year">Project Work</div>
+          <div class="timeline-card">
+            <p class="project-kicker">SS Mehta & Sons · Lexis International</p>
+            <h3>Surveying & Construction Support</h3>
+            <p>
+              Supported road and construction survey workflows, benchmarks, profile measurements,
+              control surveys, project documentation and database/process improvements.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ai-data light-section section-pad" id="ai-data">
+      <div class="ai-grid">
+        <div class="ai-copy">
+          <div class="section-label">AI & Data Lab</div>
+          <h2>Building smarter geospatial workflows.</h2>
+          <p>
+            I use Python, SQL, GIS and analytics tooling to automate repetitive tasks, structure spatial information,
+            expose data through APIs and experiment with machine learning and AI-assisted workflows.
+          </p>
+          <div class="ai-pill-list">
+            <span>Spatial APIs</span><span>Data cleaning</span><span>Model evaluation</span>
+            <span>Workflow automation</span><span>GeoJSON</span><span>Dashboards</span>
+          </div>
+        </div>
+
+        <div class="code-window" aria-label="Illustrative Python spatial workflow">
+          <div class="code-tabs">
+            <span class="active">Python</span><span>GeoJSON</span><span>SQL</span><button id="runCode">▶ Run</button>
+          </div>
+          <pre><code><span class="cm"># Spatial workflow concept</span>
+<span class="kw">import</span> geopandas <span class="kw">as</span> gpd
+<span class="kw">from</span> sklearn.ensemble <span class="kw">import</span> RandomForestClassifier
+
+features = gpd.read_file(<span class="str">"spatial_features.geojson"</span>)
+features = features.to_crs(<span class="str">"EPSG:32737"</span>)
+
+X = features[[<span class="str">"access"</span>, <span class="str">"density"</span>, <span class="str">"elevation"</span>]]
+model = RandomForestClassifier(n_estimators=<span class="num">100</span>)
+model.fit(X, features[<span class="str">"class"</span>])
+
+features[<span class="str">"prediction"</span>] = model.predict(X)</code></pre>
+          <div class="code-output" id="codeOutput">Ready to visualize spatial results.</div>
+        </div>
+
+        <div class="ai-stack">
+          <article><span>◈</span><div><strong>Spatial Intelligence</strong><small>GIS + analytical modelling</small></div></article>
+          <article><span>⌁</span><div><strong>Change Detection</strong><small>Earth observation workflows</small></div></article>
+          <article><span>⌘</span><div><strong>AI Model Training</strong><small>Evaluation & data quality</small></div></article>
+          <article><span>{ }</span><div><strong>APIs & Automation</strong><small>Python + SQL + GeoJSON</small></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills dark-section section-pad" id="skills">
+      <div class="section-header dark-header">
+        <div>
+          <div class="section-label">Toolkit</div>
+          <h2>Tools I use to move from field data to useful decisions.</h2>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <article>
+          <h3>GIS & Mapping</h3>
+          <p>QGIS · ArcGIS · GeoServer · Google Earth Engine · AutoCAD · Civil 3D · ERDAS IMAGINE</p>
+        </article>
+        <article>
+          <h3>Data & Programming</h3>
+          <p>Python · Pandas · GeoPandas · SQL · R · MATLAB · PostgreSQL · MySQL · MS SQL Server</p>
+        </article>
+        <article>
+          <h3>Remote Sensing</h3>
+          <p>Landsat · Sentinel · MODIS · Terra · Aqua · Earth observation · photogrammetry · drone imagery</p>
+        </article>
+        <article>
+          <h3>Surveying</h3>
+          <p>RTK · GNSS/GPS · Total Station · Leveling · topographic surveys · cadastral workflows</p>
+        </article>
+        <article>
+          <h3>Data Products</h3>
+          <p>Power BI · Tableau · APIs · GeoJSON · dashboards · web mapping · React · Next.js · Tailwind CSS</p>
+        </article>
+        <article>
+          <h3>Research & Delivery</h3>
+          <p>Technical writing · data visualization · project coordination · research design · reporting · presentations</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="research light-section section-pad" id="research">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Research & Learning</div>
+          <h2>Ideas, evidence and applied spatial thinking.</h2>
+          <p>Research has been a recurring part of my work — from academic analysis to technical articles and decision-support outputs.</p>
+        </div>
+      </div>
+
+      <div class="research-grid">
+        <article class="research-feature">
+          <div class="research-art city-art"></div>
+          <div>
+            <p class="project-kicker">Academic Research</p>
+            <h3>GIS + machine learning for crime analysis</h3>
+            <p>
+              My JKUAT final-year project explored how spatial variables and predictive modelling can support
+              safer spatial planning and better-informed decision-making.
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <span class="article-index">01</span>
+          <p class="project-kicker">Published Writing</p>
+          <h3>The Afrospatial Magazine</h3>
+          <p>Authored several research-based geospatial articles translating technical findings into accessible, actionable insights.</p>
+        </article>
+
+        <article>
+          <span class="article-index">02</span>
+          <p class="project-kicker">Urban Systems</p>
+          <h3>Smarter waste management in urban spaces</h3>
+          <p>Explored measures such as sensor-enabled waste bins, better information systems and recycling-oriented urban management.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="education light-section section-pad" id="education">
+      <div class="section-label">Education & Certifications</div>
+      <div class="education-grid">
+        <article class="degree-card">
+          <span class="edu-year">2016–2024</span>
+          <h2>BSc. Geomatic Engineering & Geospatial Information Systems</h2>
+          <p>Jomo Kenyatta University of Agriculture & Technology</p>
+        </article>
+        <div class="cert-list">
+          <article><span>2024–2025</span><strong>Google Data Analytics</strong><small>Coursera</small></article>
+          <article><span>2024–2025</span><strong>Microsoft Power BI Data Analyst</strong><small>Coursera</small></article>
+          <article><span>2023</span><strong>R Programming</strong><small>Academic Data Analysts</small></article>
+          <article><span>Membership</span><strong>Graduate Engineer approval process</strong><small>ISK & EBK</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-landscape" aria-hidden="true">
+        <div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div>
+      </div>
+      <div class="contact-content">
+        <div>
+          <div class="section-label">Let's Work Together</div>
+          <h2>Let’s create impact with spatial data.</h2>
+        </div>
+        <p>
+          I’m open to geospatial, surveying, GIS, data, research and AI-related opportunities —
+          including remote collaborations and project-based work.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:christine.wahome@students.jkuat.ac.ke">Email Christine <span>↗</span></a>
+          <a href="tel:+254717396334">+254 717 396 334</a>
+          <span>Nairobi, Kenya</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 70 34"><path d="M2 29C13 22 18 8 29 7c8-1 9 12 17 12 6 0 8-8 15-9 3 0 5 1 7 4"/><path d="M8 29h54"/></svg>
+      </span>
+      <span><strong>Christine Wairimu</strong><small>Geospatial Engineer</small></span>
+    </a>
+    <p>Spatial data has the power to make development more informed, sustainable and equitable.</p>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="script.js"></script>
 </body>
 </html>
